@@ -1,0 +1,3 @@
+[functions.proposal-response]
+verify_jwt = false
+entrypoint = "./functions/proposal-response/index.ts"
