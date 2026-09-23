@@ -106,7 +106,7 @@ export const gallery: GalleryPhoto[] = [
     imageHint: 'soft pink rose petals',
   },
   {
-    image: '/images/gallery/02.jpg',
+    image: '/images/gallery/02.jpeg',
     date: 'One of those days',
     caption: 'One of my favorite days.',
     description: 'Nothing extraordinary happened. And that\'s exactly why I loved it.',
@@ -120,7 +120,7 @@ export const gallery: GalleryPhoto[] = [
     imageHint: 'pastel blooming flowers',
   },
   {
-    image: '/images/gallery/04.jpg',
+    image: '/images/gallery/04.jpeg',
     date: 'Just us',
     caption: 'Just us being us.',
     description: 'No pretense. No performance. Just two people, completely at ease.',
@@ -134,7 +134,7 @@ export const gallery: GalleryPhoto[] = [
     imageHint: 'warm pastel blossoms',
   },
   {
-    image: '/images/gallery/06.jpg',
+    image: '/images/gallery/06.jpeg',
     date: 'Somewhere in between',
     caption: 'Where everything quietly changed.',
     description: 'I didn\'t notice it happening. But looking back, this is where it began.',

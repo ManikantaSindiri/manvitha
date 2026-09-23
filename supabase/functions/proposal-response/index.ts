@@ -190,6 +190,17 @@ Deno.serve(async (req: Request) => {
       if (updated) response = updated;
     }
 
+    // Build the notification from the final persisted response so follow-up
+    // date and message submissions include every saved field.
+    const emailBody = {
+      choice: response.choice as ProposalChoice,
+      date_date: response.date_date ?? undefined,
+      date_time: response.date_time ?? undefined,
+      date_location: response.date_location ?? undefined,
+      date_activity: response.date_activity ?? undefined,
+      message: response.message ?? undefined,
+    };
+
     // Send email notification via Resend
     let emailSent = false;
     let emailError: string | undefined;
@@ -206,22 +217,8 @@ Deno.serve(async (req: Request) => {
             from: "Tanvitha's Response <onboarding@resend.dev>",
             to: [NOTIFY_EMAIL],
             subject: `💕 Tanvitha answered: ${CHOICE_LABELS[response.choice as ProposalChoice]}`,
-            html: buildEmailHtml({
-              choice: response.choice as ProposalChoice,
-              date_date: response.date_date ?? undefined,
-              date_time: response.date_time ?? undefined,
-              date_location: response.date_location ?? undefined,
-              date_activity: response.date_activity ?? undefined,
-              message: response.message ?? undefined,
-            }),
-            text: buildEmailText({
-              choice: response.choice as ProposalChoice,
-              date_date: response.date_date ?? undefined,
-              date_time: response.date_time ?? undefined,
-              date_location: response.date_location ?? undefined,
-              date_activity: response.date_activity ?? undefined,
-              message: response.message ?? undefined,
-            }),
+            html: buildEmailHtml(emailBody),
+            text: buildEmailText(emailBody),
           }),
         });
         emailSent = emailRes.ok;
